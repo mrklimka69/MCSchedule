@@ -19,7 +19,8 @@
       <form action="#" method="POST">
         Часов - <input type="number" min="0" id="hours" class="time_textarea" />
         <!-- : -->
-        Минут - <input type="number" min="0" id="minutes" class="time_textarea" />
+        Минут -
+        <input type="number" min="0" id="minutes" class="time_textarea" />
 
         <input
           type="button"
@@ -28,9 +29,20 @@
           value="Посчитать"
         />
 
-        <br>
+        <br />
         <span class="result">00:00 = 0.00грн</span>
       </form>
+    </div>
+
+    <div class="full_page_button">
+      <a href="fullSchedule.html">
+        <input
+          type="button"
+          class="btn btn-primary"
+          id="button"
+          value="Полное расписание"
+        />
+      </a>
     </div>
 
     <script
