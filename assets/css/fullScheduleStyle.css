@@ -49,3 +49,12 @@ body {
 .result_money {
     color: blue;
 }
+
+.date_block{
+    margin-bottom: 30px;
+}
+
+.textToCopy {
+    margin-top: 10px;
+    font-size: small;
+}

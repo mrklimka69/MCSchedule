@@ -34,7 +34,11 @@ document.getElementById('sb_finish').onchange = countAndShowTime;
 document.getElementById('vs_start').onchange = countAndShowTime;
 document.getElementById('vs_finish').onchange = countAndShowTime;
 
+document.getElementById('date_start').onchange = countAndShowTime;
+
 document.getElementById('button').onclick = countAndShowTime;
+
+
 
 function countAndShowTime() {
     ////////////////////////////// Понедельник
@@ -381,6 +385,40 @@ function countAndShowTime() {
     document.getElementById('all_result').innerHTML = all_textToShow;
 
     document.getElementById('all_salary').innerHTML = getMoneyFromMs(all_ms).toFixed(2);
+
+
+    let dates = getDates();
+
+    let scheduleText = "////" + dates["res_pn"] + "." + getCurrYear() + " - " + dates["res_vs"] + "." + getCurrYear() + "////" + "\n";
+    if (pn_ms > 0) {
+        scheduleText += "Пн(" + dates["res_pn"] + ") > " + start + " - " + finish + " (" + textToShow + ")" + "\n";
+    }
+    if (vt_ms > 0) {
+        scheduleText += "Вт(" + dates["res_vt"] + ") > " + vt_start + " - " + vt_finish + " (" + vt_textToShow + ")" + "\n";
+    }
+    if (sr_ms > 0) {
+        scheduleText += "Ср(" + dates["res_sr"] + ") > " + sr_start + " - " + sr_finish + " (" + sr_textToShow + ")" + "\n";
+    }
+    if (cht_ms > 0) {
+        scheduleText += "Чт(" + dates["res_cht"] + ") > " + cht_start + " - " + cht_finish + " (" + cht_textToShow + ")" + "\n";
+    }
+    if (pt_ms > 0) {
+        scheduleText += "Пт(" + dates["res_pt"] + ") > " + pt_start + " - " + pt_finish + " (" + pt_textToShow + ")" + "\n";
+    }
+    if (sb_ms > 0) {
+        scheduleText += "Сб(" + dates["res_sb"] + ") > " + sb_start + " - " + sb_finish + " (" + sb_textToShow + ")" + "\n";
+    }
+    if (vs_ms > 0) {
+        scheduleText += "Вс(" + dates["res_vs"] + ") > " + vs_start + " - " + vs_finish + " (" + vs_textToShow + ")" + "\n";
+    }
+
+    if (all_ms > 0) {
+        scheduleText += "Итого " + all_textToShow + " (~" + getMoneyFromMs(all_ms).toFixed(0) + "грн)";
+    }
+
+
+
+    document.getElementById('textToCopy').innerHTML = scheduleText;
 }
 
 function getMs(start, finish) {
@@ -448,4 +486,46 @@ function getMoneyFromMs(ms) {
     const workTime = (minutes / 60) + hours / 1;
 
     return workTime * 83.3175;
+}
+
+function getDates() {
+    let startDate = document.querySelector("#date_start").value;
+
+    let pn_date = Date.parse(startDate);
+    let vt_date = Date.parse(startDate) + 86400000;
+    let sr_date = Date.parse(startDate) + 86400000 * 2;
+    let cht_date = Date.parse(startDate) + 86400000 * 3;
+    let pt_date = Date.parse(startDate) + 86400000 * 4;
+    let sb_date = Date.parse(startDate) + 86400000 * 5;
+    let vs_date = Date.parse(startDate) + 86400000 * 6;
+
+    let temp = new Date(pn_date).toISOString().substring(0, 10);
+    let res_pn = temp[8] + temp[9] + "." + temp[5] + temp[6];
+
+    temp = new Date(vt_date).toISOString().substring(0, 10);
+    let res_vt = temp[8] + temp[9] + "." + temp[5] + temp[6];
+
+    temp = new Date(sr_date).toISOString().substring(0, 10);
+    let res_sr = temp[8] + temp[9] + "." + temp[5] + temp[6];
+
+    temp = new Date(cht_date).toISOString().substring(0, 10);
+    let res_cht = temp[8] + temp[9] + "." + temp[5] + temp[6];
+
+    temp = new Date(pt_date).toISOString().substring(0, 10);
+    let res_pt = temp[8] + temp[9] + "." + temp[5] + temp[6];
+
+    temp = new Date(sb_date).toISOString().substring(0, 10);
+    let res_sb = temp[8] + temp[9] + "." + temp[5] + temp[6];
+
+    temp = new Date(vs_date).toISOString().substring(0, 10);
+    let res_vs = temp[8] + temp[9] + "." + temp[5] + temp[6];
+
+    let result = { res_pn, res_vt, res_sr, res_cht, res_pt, res_sb, res_vs };
+
+    return result;
+}
+
+function getCurrYear() {
+    var today = new Date();
+    return today.toLocaleString().substring(6, 10);
 }
