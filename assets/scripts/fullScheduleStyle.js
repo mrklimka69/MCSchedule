@@ -46,6 +46,14 @@ document.getElementById('pt_break').onchange = countAndShowTime;
 document.getElementById('sb_break').onchange = countAndShowTime;
 document.getElementById('vs_break').onchange = countAndShowTime;
 
+document.getElementById('pn_job_title').onchange = countAndShowTime;
+document.getElementById('vt_job_title').onchange = countAndShowTime;
+document.getElementById('sr_job_title').onchange = countAndShowTime;
+document.getElementById('cht_job_title').onchange = countAndShowTime;
+document.getElementById('pt_job_title').onchange = countAndShowTime;
+document.getElementById('sb_job_title').onchange = countAndShowTime;
+document.getElementById('vs_job_title').onchange = countAndShowTime;
+
 
 function countAndShowTime() {
     ////////////////////////////// Понедельник
@@ -250,49 +258,77 @@ function countAndShowTime() {
         if (pn_break.checked) {
             scheduleText += " б"
         }
-        scheduleText += ")" + "\n"
+        scheduleText += ")";
+
+        scheduleText += " " + getJobTitle(document.getElementById('pn_job_title').value);
+
+        scheduleText += "\n";
     }
     if (vt_total_ms > 0) {
         scheduleText += "Вт(" + dates["res_vt"] + ") > " + vt_start + " - " + vt_finish + " (" + getNormalTime(vt_total_ms);
         if (vt_break.checked) {
             scheduleText += " б"
         }
-        scheduleText += ")" + "\n"
+        scheduleText += ")";
+
+        scheduleText += " " + getJobTitle(document.getElementById('vt_job_title').value);
+
+        scheduleText += "\n";
     }
     if (sr_total_ms > 0) {
         scheduleText += "Ср(" + dates["res_sr"] + ") > " + sr_start + " - " + sr_finish + " (" + getNormalTime(sr_total_ms);
         if (sr_break.checked) {
             scheduleText += " б"
         }
-        scheduleText += ")" + "\n"
+        scheduleText += ")";
+
+        scheduleText += " " + getJobTitle(document.getElementById('sr_job_title').value);
+
+        scheduleText += "\n";
     }
     if (cht_total_ms > 0) {
         scheduleText += "Чт(" + dates["res_cht"] + ") > " + cht_start + " - " + cht_finish + " (" + getNormalTime(cht_total_ms);
         if (cht_break.checked) {
             scheduleText += " б"
         }
-        scheduleText += ")" + "\n"
+        scheduleText += ")";
+
+        scheduleText += " " + getJobTitle(document.getElementById('cht_job_title').value);
+
+        scheduleText += "\n";
     }
     if (pt_total_ms > 0) {
         scheduleText += "Пт(" + dates["res_pt"] + ") > " + pt_start + " - " + pt_finish + " (" + getNormalTime(pt_total_ms);
         if (pt_break.checked) {
             scheduleText += " б"
         }
-        scheduleText += ")" + "\n"
+        scheduleText += ")";
+
+        scheduleText += " " + getJobTitle(document.getElementById('pt_job_title').value);
+
+        scheduleText += "\n";
     }
     if (sb_total_ms > 0) {
         scheduleText += "Сб(" + dates["res_sb"] + ") > " + sb_start + " - " + sb_finish + " (" + getNormalTime(sb_total_ms);
         if (sb_break.checked) {
             scheduleText += " б"
         }
-        scheduleText += ")" + "\n"
+        scheduleText += ")";
+
+        scheduleText += " " + getJobTitle(document.getElementById('sb_job_title').value);
+
+        scheduleText += "\n";
     }
     if (vs_total_ms > 0) {
         scheduleText += "Вс(" + dates["res_vs"] + ") > " + vs_start + " - " + vs_finish + " (" + getNormalTime(vs_total_ms);
         if (vs_break.checked) {
             scheduleText += " б"
         }
-        scheduleText += ")" + "\n"
+        scheduleText += ")";
+
+        scheduleText += " " + getJobTitle(document.getElementById('vs_job_title').value);
+
+        scheduleText += "\n";
     }
 
     if (all_ms > 0) {
@@ -411,4 +447,137 @@ function getDates() {
 function getCurrYear() {
     var today = new Date();
     return today.toLocaleString().substring(6, 10);
+}
+
+function getJobTitle(userTitle) {
+    const FRY = ["fry", "фри", "картошка"];
+    const FRITYUR = ["kfr", "фритюр", "фритюрщик"];
+    const GRILL = ["kgr", "гриль", "гриля", "грильщик"];
+    const ZAPRAVSHIK = ["kas", "заправка", "заправщик", "грильщик"];
+    const INITSIATOR = ["kip", "инициатор", "булки"];
+    const FINISHER = ["kfi", "финиш", "финишер"];
+    const ZAL = ["ll", "зал"];
+    const OUT = ["out", "улица", "аут"];
+    const BD = ["bd", "bdap", "бд", "бдап"];
+    const KASSA = ["sot", "сот", "кассир", "касса", "каса"];
+    const SBORSHIK = ["sru", "сру", "сборщик", "сборка"];
+    const PREZENTER = ["spe", "спе", "презентёр", "презентер"];
+    const EKSPEDITOR = ["sep", "сеп", "експедитор", "экспедитор"];
+    const TABLE_SERVIS = ["sts", "стс", "тенты", "тент", "тейбл", "тэйбл", "разнос", "вынос", "тейбл сервис"];
+    const DRIVE = ["dt", "дт", "драйв",];
+    const DOSTAVKA = ["mds", "мдс", "доставка", "доставщик"];
+
+    /////////////////////// Картошка
+    for (let i = 0; i < FRY.length; i++) {
+        if (FRY[i] === userTitle.toLowerCase()) {
+            return "фри";
+        }
+    }
+
+    /////////////////////// Фритюр
+    for (let i = 0; i < FRITYUR.length; i++) {
+        if (FRITYUR[i] === userTitle.toLowerCase()) {
+            return "фритюрщик";
+        }
+    }
+
+    /////////////////////// Гриля
+    for (let i = 0; i < GRILL.length; i++) {
+        if (GRILL[i] === userTitle.toLowerCase()) {
+            return "гриля";
+        }
+    }
+
+    /////////////////////// Заправщик
+    for (let i = 0; i < ZAPRAVSHIK.length; i++) {
+        if (ZAPRAVSHIK[i] === userTitle.toLowerCase()) {
+            return "заправщик";
+        }
+    }
+
+    /////////////////////// Зал
+    for (let i = 0; i < ZAL.length; i++) {
+        if (ZAL[i] === userTitle.toLowerCase()) {
+            return "зал";
+        }
+    }
+
+    /////////////////////// Аут
+    for (let i = 0; i < OUT.length; i++) {
+        if (OUT[i] === userTitle.toLowerCase()) {
+            return "аут";
+        }
+    }
+
+    /////////////////////// Бд
+    for (let i = 0; i < BD.length; i++) {
+        if (BD[i] === userTitle.toLowerCase()) {
+            return "бд";
+        }
+    }
+
+    /////////////////////// Касса
+    for (let i = 0; i < KASSA.length; i++) {
+        if (KASSA[i] === userTitle.toLowerCase()) {
+            return "касса";
+        }
+    }
+
+    /////////////////////// Сборщик
+    for (let i = 0; i < SBORSHIK.length; i++) {
+        if (SBORSHIK[i] === userTitle.toLowerCase()) {
+            return "сборщик";
+        }
+    }
+
+    /////////////////////// Презентёр
+    for (let i = 0; i < PREZENTER.length; i++) {
+        if (PREZENTER[i] === userTitle.toLowerCase()) {
+            return "презентёр";
+        }
+    }
+
+    /////////////////////// Экспедитор
+    for (let i = 0; i < EKSPEDITOR.length; i++) {
+        if (EKSPEDITOR[i] === userTitle.toLowerCase()) {
+            return "экспедитор";
+        }
+    }
+
+    /////////////////////// Тейбл сервис
+    for (let i = 0; i < TABLE_SERVIS.length; i++) {
+        if (TABLE_SERVIS[i] === userTitle.toLowerCase()) {
+            return "тейбл сервис";
+        }
+    }
+
+    /////////////////////// Инициатор
+    for (let i = 0; i < INITSIATOR.length; i++) {
+        if (INITSIATOR[i] === userTitle.toLowerCase()) {
+            return "инициатор";
+        }
+    }
+
+    /////////////////////// Финишер
+    for (let i = 0; i < FINISHER.length; i++) {
+        if (FINISHER[i] === userTitle.toLowerCase()) {
+            return "финишер";
+        }
+    }
+
+    /////////////////////// Драйв
+    for (let i = 0; i < DRIVE.length; i++) {
+        if (DRIVE[i] === userTitle.toLowerCase()) {
+            return "драйв";
+        }
+    }
+
+    /////////////////////// Доставка
+    for (let i = 0; i < DOSTAVKA.length; i++) {
+        if (DOSTAVKA[i] === userTitle.toLowerCase()) {
+            return "доставка";
+        }
+    }
+
+    return "";
 }

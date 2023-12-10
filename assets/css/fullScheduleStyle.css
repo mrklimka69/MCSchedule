@@ -42,7 +42,7 @@ body {
     font-size: 20px;
 }
 
-.result_time{
+.result_time {
     color: red;
 }
 
@@ -50,11 +50,26 @@ body {
     color: blue;
 }
 
-.date_block{
+.date_block {
     margin-bottom: 30px;
 }
 
 .textToCopy {
     margin-top: 10px;
     font-size: small;
+}
+
+.without_break_checkbox_label {
+    color: rgb(5, 18, 204);
+}
+
+.job_title_input {
+    height:  20px;
+    width: 70px;
+    margin-top: 9px;
+    font-size: small;
+}
+
+.form-check-input{
+    border-color: rgb(0, 3, 161);
 }

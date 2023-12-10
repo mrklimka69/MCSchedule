@@ -11,185 +11,234 @@
       crossorigin="anonymous"
     />
 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="assets/css/fullScheduleStyle.css" />
     <title>Schedule</title>
   </head>
   <body>
-    <form action="">
-      <div class="main_block">
-        <div class="date_block">
-          Выберите первый день недели (понедельник): <br />
-          <input type="date" id="date_start" />
-        </div>
-
-        <table>
-          <tr>
-            <td>Пн:</td>
-            <td>
-              <input type="time" min="0" id="pn_start" class="time_textarea" />
-            </td>
-            <td>:</td>
-            <td>
-              <input type="time" min="0" id="pn_finish" class="time_textarea" />
-            </td>
-            <td><label id="pn_result">00:00</label></td>
-
-            <td>
-              <label class="without_break_checkbox_label">
-                ( Без брейка -
-              </label>
-              <input type="checkbox" name="" id="pn_break" />
-              <label class="without_break_checkbox_label"> ) </label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Вт:</td>
-            <td>
-              <input type="time" min="0" id="vt_start" class="time_textarea" />
-            </td>
-            <td>:</td>
-            <td>
-              <input type="time" min="0" id="vt_finish" class="time_textarea" />
-            </td>
-            <td><label id="vt_result">00:00</label></td>
-
-            <td>
-              <label class="without_break_checkbox_label">
-                ( Без брейка -
-              </label>
-              <input type="checkbox" name="" id="vt_break" />
-              <label class="without_break_checkbox_label"> ) </label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Ср:</td>
-            <td>
-              <input type="time" min="0" id="sr_start" class="time_textarea" />
-            </td>
-            <td>:</td>
-            <td>
-              <input type="time" min="0" id="sr_finish" class="time_textarea" />
-            </td>
-            <td><label id="sr_result">00:00</label></td>
-
-            <td>
-              <label class="without_break_checkbox_label">
-                ( Без брейка -
-              </label>
-              <input type="checkbox" name="" id="sr_break" />
-              <label class="without_break_checkbox_label"> ) </label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Чт:</td>
-            <td>
-              <input type="time" min="0" id="cht_start" class="time_textarea" />
-            </td>
-            <td>:</td>
-            <td>
-              <input
-                type="time"
-                min="0"
-                id="cht_finish"
-                class="time_textarea"
-              />
-            </td>
-            <td><label id="cht_result">00:00</label></td>
-            
-            <td>
-              <label class="without_break_checkbox_label">
-                ( Без брейка -
-              </label>
-              <input type="checkbox" name="" id="cht_break" />
-              <label class="without_break_checkbox_label"> ) </label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Пт:</td>
-            <td>
-              <input type="time" min="0" id="pt_start" class="time_textarea" />
-            </td>
-            <td>:</td>
-            <td>
-              <input type="time" min="0" id="pt_finish" class="time_textarea" />
-            </td>
-            <td><label id="pt_result">00:00</label></td>
-
-            <td>
-              <label class="without_break_checkbox_label">
-                ( Без брейка -
-              </label>
-              <input type="checkbox" name="" id="pt_break" />
-              <label class="without_break_checkbox_label"> ) </label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Сб:</td>
-            <td>
-              <input type="time" min="0" id="sb_start" class="time_textarea" />
-            </td>
-            <td>:</td>
-            <td>
-              <input type="time" min="0" id="sb_finish" class="time_textarea" />
-            </td>
-            <td><label id="sb_result">00:00</label></td>
-
-            <td>
-              <label class="without_break_checkbox_label">
-                ( Без брейка -
-              </label>
-              <input type="checkbox" name="" id="sb_break" />
-              <label class="without_break_checkbox_label"> ) </label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Вс:</td>
-            <td>
-              <input type="time" min="0" id="vs_start" class="time_textarea" />
-            </td>
-            <td>:</td>
-            <td>
-              <input type="time" min="0" id="vs_finish" class="time_textarea" />
-            </td>
-            <td><label id="vs_result">00:00</label></td>
-
-            <td>
-              <label class="without_break_checkbox_label">
-                ( Без брейка -
-              </label>
-              <input type="checkbox" name="" id="vs_break" />
-              <label class="without_break_checkbox_label"> ) </label>
-            </td>
-          </tr>
-        </table>
-
-        <table>
-          <tr>
-            <td>Итого:</td>
-            <td><label class="result_time" id="all_result">00:00</label></td>
-            <td>=</td>
-            <td><label class="result_money" id="all_salary">0.00</label>грн</td>
-          </tr>
-        </table>
-
-        <br />
-        <input
-          type="button"
-          class="btn btn-primary"
-          id="button"
-          value="Посчитать"
-        />
-        <div class="textToCopy">
-          <textarea id="textToCopy" cols="60" rows="10"></textarea>
-        </div>
+    <div class="main_block">
+      <div class="date_block">
+        Выберите первый день недели (понедельник): <br />
+        <input type="date" id="date_start" />
       </div>
-    </form>
+
+      <table>
+        <tr>
+          <td>Пн:</td>
+          <td>
+            <input type="time" min="0" id="pn_start" class="time_textarea" />
+          </td>
+          <td>:</td>
+          <td>
+            <input type="time" min="0" id="pn_finish" class="time_textarea" />
+          </td>
+          <td><label id="pn_result">00:00</label></td>
+
+          <td>
+            <label class="without_break_checkbox_label"> ( Без брейка - </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name=""
+              id="pn_break"
+            />
+            <label class="without_break_checkbox_label"> ) </label>
+          </td>
+
+          <td>
+            <input class="job_title_input" type="text" id="pn_job_title" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>Вт:</td>
+          <td>
+            <input type="time" min="0" id="vt_start" class="time_textarea" />
+          </td>
+          <td>:</td>
+          <td>
+            <input type="time" min="0" id="vt_finish" class="time_textarea" />
+          </td>
+          <td><label id="vt_result">00:00</label></td>
+
+          <td>
+            <label class="without_break_checkbox_label"> ( Без брейка - </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name=""
+              id="vt_break"
+            />
+            <label class="without_break_checkbox_label"> ) </label>
+          </td>
+
+          <td>
+            <input class="job_title_input" type="text" id="vt_job_title" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>Ср:</td>
+          <td>
+            <input type="time" min="0" id="sr_start" class="time_textarea" />
+          </td>
+          <td>:</td>
+          <td>
+            <input type="time" min="0" id="sr_finish" class="time_textarea" />
+          </td>
+          <td><label id="sr_result">00:00</label></td>
+
+          <td>
+            <label class="without_break_checkbox_label"> ( Без брейка - </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name=""
+              id="sr_break"
+            />
+            <label class="without_break_checkbox_label"> ) </label>
+          </td>
+
+          <td>
+            <input class="job_title_input" type="text" id="sr_job_title" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>Чт:</td>
+          <td>
+            <input type="time" min="0" id="cht_start" class="time_textarea" />
+          </td>
+          <td>:</td>
+          <td>
+            <input type="time" min="0" id="cht_finish" class="time_textarea" />
+          </td>
+          <td><label id="cht_result">00:00</label></td>
+
+          <td>
+            <label class="without_break_checkbox_label"> ( Без брейка - </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name=""
+              id="cht_break"
+            />
+            <label class="without_break_checkbox_label"> ) </label>
+          </td>
+
+          <td>
+            <input class="job_title_input" type="text" id="cht_job_title" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>Пт:</td>
+          <td>
+            <input type="time" min="0" id="pt_start" class="time_textarea" />
+          </td>
+          <td>:</td>
+          <td>
+            <input type="time" min="0" id="pt_finish" class="time_textarea" />
+          </td>
+          <td><label id="pt_result">00:00</label></td>
+
+          <td>
+            <label class="without_break_checkbox_label"> ( Без брейка - </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name=""
+              id="pt_break"
+            />
+            <label class="without_break_checkbox_label"> ) </label>
+          </td>
+
+          <td>
+            <input class="job_title_input" type="text" id="pt_job_title" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>Сб:</td>
+          <td>
+            <input type="time" min="0" id="sb_start" class="time_textarea" />
+          </td>
+          <td>:</td>
+          <td>
+            <input type="time" min="0" id="sb_finish" class="time_textarea" />
+          </td>
+          <td><label id="sb_result">00:00</label></td>
+
+          <td>
+            <label class="without_break_checkbox_label"> ( Без брейка - </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name=""
+              id="sb_break"
+            />
+            <label class="without_break_checkbox_label"> ) </label>
+          </td>
+
+          <td>
+            <input class="job_title_input" type="text" id="sb_job_title" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>Вс:</td>
+          <td>
+            <input type="time" min="0" id="vs_start" class="time_textarea" />
+          </td>
+          <td>:</td>
+          <td>
+            <input type="time" min="0" id="vs_finish" class="time_textarea" />
+          </td>
+          <td><label id="vs_result">00:00</label></td>
+
+          <td>
+            <label class="without_break_checkbox_label"> ( Без брейка - </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name=""
+              id="vs_break"
+            />
+            <label class="without_break_checkbox_label"> ) </label>
+          </td>
+
+          <td>
+            <input class="job_title_input" type="text" id="vs_job_title" />
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td>Итого:</td>
+          <td><label class="result_time" id="all_result">00:00</label></td>
+          <td>=</td>
+          <td><label class="result_money" id="all_salary">0.00</label>грн</td>
+        </tr>
+      </table>
+
+      <br />
+      <input
+        type="button"
+        class="btn btn-primary"
+        id="button"
+        value="Посчитать"
+      />
+      <div class="textToCopy">
+        <textarea id="textToCopy" cols="60" rows="10"></textarea>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -197,5 +246,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="assets/scripts/fullScheduleStyle.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
