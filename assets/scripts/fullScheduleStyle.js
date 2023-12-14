@@ -251,8 +251,9 @@ function countAndShowTime() {
 
 
     let dates = getDates();
+    let years = getYearFromDate(document.querySelector("#date_start").value);
 
-    let scheduleText = "////" + dates["res_pn"] + "." + getCurrYear() + " - " + dates["res_vs"] + "." + getCurrYear() + "////" + "\n";
+    let scheduleText = "////" + dates["res_pn"] + "." + years["pn"] + " - " + dates["res_vs"] + "." + years["vs"] + "////" + "\n";
     if (pn_total_ms > 0) {
         scheduleText += "Пн(" + dates["res_pn"] + ") > " + start + " - " + finish + " (" + getNormalTime(pn_total_ms);
         if (pn_break.checked) {
@@ -444,19 +445,24 @@ function getDates() {
     return result;
 }
 
-function getCurrYear() {
-    var today = new Date();
-    return today.toLocaleString().substring(6, 10);
+function getYearFromDate(date) {
+    let pn = date.toLocaleString().substring(0, 4);
+
+    let vs = new Date(Date.parse(date) + 86400000 * 6).toISOString().substring(0, 4);
+
+    return { pn, vs };
 }
 
 function getJobTitle(userTitle) {
+    userTitle = userTitle.trim();
+
     const FRY = ["fry", "фри", "картошка"];
     const FRITYUR = ["kfr", "фритюр", "фритюрщик"];
     const GRILL = ["kgr", "гриль", "гриля", "грильщик"];
     const ZAPRAVSHIK = ["kas", "заправка", "заправщик", "грильщик"];
     const INITSIATOR = ["kip", "инициатор", "булки"];
     const FINISHER = ["kfi", "финиш", "финишер"];
-    const ZAL = ["ll", "зал"];
+    const ZAL = ["ll", "зал", "лл"];
     const OUT = ["out", "улица", "аут"];
     const BD = ["bd", "bdap", "бд", "бдап"];
     const KASSA = ["sot", "сот", "кассир", "касса", "каса"];
