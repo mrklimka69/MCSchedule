@@ -11,6 +11,10 @@ body {
     background-size: cover;
 }
 
+.button_sumFromAllTime {
+    padding: 8px;
+}
+
 .main_block {
     position: absolute;
     top: 50%;
@@ -59,17 +63,26 @@ body {
     font-size: small;
 }
 
-.without_break_checkbox_label {
-    color: rgb(5, 18, 204);
-}
-
 .job_title_input {
-    height:  20px;
+    height: 20px;
     width: 70px;
     margin-top: 9px;
     font-size: small;
 }
 
-.form-check-input{
+.form-check-input {
     border-color: rgb(0, 3, 161);
+    width: 15px;
+    height: 15px;
+
+    margin: 3px;
+}
+
+.double_checkbox_div {
+    text-align: center;
+
+    margin-left: 9px;
+    margin-bottom: 3px;
+
+    font-size: medium;
 }

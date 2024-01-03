@@ -13,6 +13,8 @@ document.getElementById('sb_finish').value = "00:00";
 document.getElementById('vs_start').value = "00:00";
 document.getElementById('vs_finish').value = "00:00";
 
+// document.getElementById('textToInput').onchange = countAndShowTime;
+
 document.getElementById('pn_start').onchange = countAndShowTime;
 document.getElementById('pn_finish').onchange = countAndShowTime;
 
@@ -54,6 +56,15 @@ document.getElementById('pt_job_title').onchange = countAndShowTime;
 document.getElementById('sb_job_title').onchange = countAndShowTime;
 document.getElementById('vs_job_title').onchange = countAndShowTime;
 
+document.getElementById('pn_double_panch').onchange = countAndShowTime;
+document.getElementById('vt_double_panch').onchange = countAndShowTime;
+document.getElementById('sr_double_panch').onchange = countAndShowTime;
+document.getElementById('cht_double_panch').onchange = countAndShowTime;
+document.getElementById('pt_double_panch').onchange = countAndShowTime;
+document.getElementById('sb_double_panch').onchange = countAndShowTime;
+document.getElementById('vs_double_panch').onchange = countAndShowTime;
+
+const moneyPerHour = 103.5;
 
 function countAndShowTime() {
     ////////////////////////////// Понедельник
@@ -72,6 +83,7 @@ function countAndShowTime() {
             pn_total_ms += 1800000;
         }
     }
+
 
     document.getElementById('pn_result').innerHTML = getNormalTime(pn_total_ms);
 
@@ -92,6 +104,7 @@ function countAndShowTime() {
             vt_total_ms += 1800000;
         }
     }
+
 
     document.getElementById('vt_result').innerHTML = getNormalTime(vt_total_ms);
 
@@ -140,7 +153,6 @@ function countAndShowTime() {
     let pt_start = document.getElementById('pt_start').value;
     let pt_finish = document.getElementById('pt_finish').value;
     let pt_break = document.getElementById('pt_break');
-
 
     let pt_start_hours = pt_start[0] + pt_start[1];
     let pt_start_minutes = pt_start[3] + pt_start[4];
@@ -244,10 +256,12 @@ function countAndShowTime() {
     all_ms = pn_total_ms + vt_total_ms + sr_total_ms + cht_total_ms + pt_total_ms + sb_total_ms + vs_total_ms;
 
 
+
+
     all_textToShow = getNormalTime(all_ms);
     document.getElementById('all_result').innerHTML = all_textToShow;
 
-    document.getElementById('all_salary').innerHTML = getMoneyFromMs(all_ms).toFixed(2);
+    // document.getElementById('all_salary').innerHTML = getMoneyFromMs(all_ms).toFixed(2);
 
 
     let dates = getDates();
@@ -256,9 +270,14 @@ function countAndShowTime() {
     let scheduleText = "////" + dates["res_pn"] + "." + years["pn"] + " - " + dates["res_vs"] + "." + years["vs"] + "////" + "\n";
     if (pn_total_ms > 0) {
         scheduleText += "Пн(" + dates["res_pn"] + ") > " + start + " - " + finish + " (" + getNormalTime(pn_total_ms);
+        
         if (pn_break.checked) {
             scheduleText += " б"
         }
+        if (document.getElementById('pn_double_panch').checked) {
+            scheduleText += " дп"
+        }
+
         scheduleText += ")";
 
         scheduleText += " " + getJobTitle(document.getElementById('pn_job_title').value);
@@ -267,9 +286,14 @@ function countAndShowTime() {
     }
     if (vt_total_ms > 0) {
         scheduleText += "Вт(" + dates["res_vt"] + ") > " + vt_start + " - " + vt_finish + " (" + getNormalTime(vt_total_ms);
+        
         if (vt_break.checked) {
             scheduleText += " б"
         }
+        if (document.getElementById('vt_double_panch').checked) {
+            scheduleText += " дп"
+        }
+
         scheduleText += ")";
 
         scheduleText += " " + getJobTitle(document.getElementById('vt_job_title').value);
@@ -278,9 +302,14 @@ function countAndShowTime() {
     }
     if (sr_total_ms > 0) {
         scheduleText += "Ср(" + dates["res_sr"] + ") > " + sr_start + " - " + sr_finish + " (" + getNormalTime(sr_total_ms);
+        
         if (sr_break.checked) {
             scheduleText += " б"
         }
+        if (document.getElementById('sr_double_panch').checked) {
+            scheduleText += " дп"
+        }
+
         scheduleText += ")";
 
         scheduleText += " " + getJobTitle(document.getElementById('sr_job_title').value);
@@ -289,9 +318,14 @@ function countAndShowTime() {
     }
     if (cht_total_ms > 0) {
         scheduleText += "Чт(" + dates["res_cht"] + ") > " + cht_start + " - " + cht_finish + " (" + getNormalTime(cht_total_ms);
+        
         if (cht_break.checked) {
             scheduleText += " б"
         }
+        if (document.getElementById('cht_double_panch').checked) {
+            scheduleText += " дп"
+        }
+
         scheduleText += ")";
 
         scheduleText += " " + getJobTitle(document.getElementById('cht_job_title').value);
@@ -300,9 +334,14 @@ function countAndShowTime() {
     }
     if (pt_total_ms > 0) {
         scheduleText += "Пт(" + dates["res_pt"] + ") > " + pt_start + " - " + pt_finish + " (" + getNormalTime(pt_total_ms);
+        
         if (pt_break.checked) {
             scheduleText += " б"
         }
+        if (document.getElementById('pt_double_panch').checked) {
+            scheduleText += " дп"
+        }
+
         scheduleText += ")";
 
         scheduleText += " " + getJobTitle(document.getElementById('pt_job_title').value);
@@ -311,9 +350,14 @@ function countAndShowTime() {
     }
     if (sb_total_ms > 0) {
         scheduleText += "Сб(" + dates["res_sb"] + ") > " + sb_start + " - " + sb_finish + " (" + getNormalTime(sb_total_ms);
+        
         if (sb_break.checked) {
             scheduleText += " б"
         }
+        if (document.getElementById('sb_double_panch').checked) {
+            scheduleText += " дп"
+        }
+
         scheduleText += ")";
 
         scheduleText += " " + getJobTitle(document.getElementById('sb_job_title').value);
@@ -322,9 +366,14 @@ function countAndShowTime() {
     }
     if (vs_total_ms > 0) {
         scheduleText += "Вс(" + dates["res_vs"] + ") > " + vs_start + " - " + vs_finish + " (" + getNormalTime(vs_total_ms);
+        
         if (vs_break.checked) {
             scheduleText += " б"
         }
+        if (document.getElementById('vs_double_panch').checked) {
+            scheduleText += " дп"
+        }
+
         scheduleText += ")";
 
         scheduleText += " " + getJobTitle(document.getElementById('vs_job_title').value);
@@ -332,12 +381,37 @@ function countAndShowTime() {
         scheduleText += "\n";
     }
 
+
+    /////////////////////// Проверка на двойные панчи
+    if (document.getElementById('pn_double_panch').checked) {
+        all_ms += pn_total_ms;
+    }
+    if (document.getElementById('vt_double_panch').checked) {
+        all_ms += vt_total_ms;
+    }
+    if (document.getElementById('sr_double_panch').checked) {
+        all_ms += sr_total_ms;
+    }
+    if (document.getElementById('cht_double_panch').checked) {
+        all_ms += cht_total_ms;
+    }
+    if (document.getElementById('pt_double_panch').checked) {
+        all_ms += pt_total_ms;
+    }
+    if (document.getElementById('sb_double_panch').checked) {
+        all_ms += sb_total_ms;
+    }
+    if (document.getElementById('vs_double_panch').checked) {
+        all_ms += vs_total_ms;
+    }
+    ///////////////////////
+
     if (all_ms > 0) {
         scheduleText += "Итого " + all_textToShow + " (~" + getMoneyFromMs(all_ms).toFixed(0) + "грн)";
     }
 
 
-
+    document.getElementById('all_salary').innerHTML = getMoneyFromMs(all_ms).toFixed(2);
     document.getElementById('textToCopy').innerHTML = scheduleText;
 }
 
@@ -391,21 +465,12 @@ function getNormalTime(ms) {
 }
 
 function getMoneyFromMs(ms) {
-    var hours = 0;
-    while (ms >= 3600000) {
-        hours++;
-        ms -= 3600000;
-    }
 
-    var minutes = 0;
-    while (ms >= 60000) {
-        minutes++;
-        ms -= 60000;
-    }
+    let hours = ms / 3600000;
 
-    const workTime = (minutes / 60) + hours / 1;
+    let salary = moneyPerHour - (moneyPerHour * 0.195);
 
-    return workTime * 83.3175;
+    return salary * hours;
 }
 
 function getDates() {

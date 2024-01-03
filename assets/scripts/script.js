@@ -4,7 +4,6 @@ document.getElementById('hours').onchange = countAndShowSalary;
 document.getElementById('minutes').onchange = countAndShowSalary;
 
 function countAndShowSalary() {
-
     let hours = document.getElementById('hours').value;
     let minutes = document.getElementById('minutes').value;
     while (minutes >= 60) {
@@ -22,9 +21,8 @@ function countAndShowSalary() {
         minutes = 0;
     }
 
-    const workTime = (minutes / 60) + hours / 1;
-
-    const salary = workTime * 83.3175;
+    let time = hours + ":" + minutes;
+    const salary = countSalary(getMs(time), 103.5);
 
     let textToShow = "";
 
@@ -42,4 +40,29 @@ function countAndShowSalary() {
 
 
     document.querySelector('span').innerHTML = textToShow;
+}
+
+function countSalary(ms, moneyPerHour) {
+    console.log(ms);
+    let hours = ms / 3600000;
+
+    let salary = moneyPerHour - (moneyPerHour * 0.195);
+
+    return salary * hours;
+}
+
+function getMs(start) {
+    var ms;
+
+    var val_start = start.split(":");
+
+    var hrs_start = +val_start[0];
+    var min_start = +val_start[1];
+
+
+    ms = hrs_start * 3600000 + min_start * 60000;
+
+
+
+    return ms;
 }
