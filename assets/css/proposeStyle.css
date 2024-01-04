@@ -1,0 +1,27 @@
+.settings_salary_div {
+    margin-top: 8px;
+
+    /* border-radius: 2px;
+    border-width: 2;
+    border-style: dotted;
+    border-color: black; */
+}
+
+.propose_sumPerHour_input {
+    width: 100px;
+}
+
+.propose_sumPerHour_button {
+    width: 10px;
+    height: 6px;
+
+    display: block;
+    margin: auto;
+}
+
+.propose_sumPerHour_label {
+    font-size: smaller;
+
+    padding-left: 2px;
+    padding-bottom: 4px;
+}

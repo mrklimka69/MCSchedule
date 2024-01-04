@@ -12,9 +12,51 @@
     />
 
     <link rel="stylesheet" href="assets/css/fullScheduleStyle.css" />
+    <link rel="stylesheet" href="assets/css/proposeStyle.css" />
+
     <title>Schedule</title>
   </head>
   <body>
+    <div class="settings_salary_div">
+      <center>
+        <table>
+          <tr>
+            <td><label for="">Зарплата в час = </label></td>
+
+            <td><input type="number" class="propose_sumPerHour_input" id="salaryPerHourInput" /></td>
+
+            <td>
+              <table cellspacing="0" cellpadding="0">
+                <tr>
+                  <td>
+                    <button
+                      class="btn btn-primary propose_sumPerHour_button"
+                      id="button_116.03"
+                    ></button>
+                  </td>
+                  <td>
+                    <label class="propose_sumPerHour_label">116.03 </label>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <button
+                      class="btn btn-primary propose_sumPerHour_button"
+                      id="button_119.03"
+                    ></button>
+                  </td>
+                  <td>
+                    <label class="propose_sumPerHour_label">119.03</label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </center>
+    </div>
+
     <div class="button_sumFromAllTime">
       <a href="index.html"
         ><button class="btn btn-primary">Сумма по общему времени</button></a
@@ -558,6 +600,7 @@
     </div>
 
     <script src="assets/scripts/fullScheduleStyle.js"></script>
+    <script src="assets/scripts/proposeScript.js"></script>
     <!-- <script src="assets/scripts/readSchedule.js"></script> -->
 
     <script

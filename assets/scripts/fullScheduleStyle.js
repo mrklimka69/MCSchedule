@@ -13,6 +13,8 @@ document.getElementById('sb_finish').value = "00:00";
 document.getElementById('vs_start').value = "00:00";
 document.getElementById('vs_finish').value = "00:00";
 
+document.getElementById('salaryPerHourInput').value = 0;
+
 // document.getElementById('textToInput').onchange = countAndShowTime;
 
 document.getElementById('pn_start').onchange = countAndShowTime;
@@ -64,9 +66,14 @@ document.getElementById('pt_double_panch').onchange = countAndShowTime;
 document.getElementById('sb_double_panch').onchange = countAndShowTime;
 document.getElementById('vs_double_panch').onchange = countAndShowTime;
 
-const moneyPerHour = 103.5;
+document.getElementById('salaryPerHourInput').onchange = countAndShowTime;
+document.getElementById('button_116.03').onclick = countAndShowTime;
+document.getElementById('button_119.03').onclick = countAndShowTime;
 
+let moneyPerHour = 0;
 function countAndShowTime() {
+    moneyPerHour = document.getElementById('salaryPerHourInput').value;
+
     ////////////////////////////// Понедельник
     let start = document.getElementById('pn_start').value;
     let finish = document.getElementById('pn_finish').value;
@@ -270,7 +277,7 @@ function countAndShowTime() {
     let scheduleText = "////" + dates["res_pn"] + "." + years["pn"] + " - " + dates["res_vs"] + "." + years["vs"] + "////" + "\n";
     if (pn_total_ms > 0) {
         scheduleText += "Пн(" + dates["res_pn"] + ") > " + start + " - " + finish + " (" + getNormalTime(pn_total_ms);
-        
+
         if (pn_break.checked) {
             scheduleText += " б"
         }
@@ -286,7 +293,7 @@ function countAndShowTime() {
     }
     if (vt_total_ms > 0) {
         scheduleText += "Вт(" + dates["res_vt"] + ") > " + vt_start + " - " + vt_finish + " (" + getNormalTime(vt_total_ms);
-        
+
         if (vt_break.checked) {
             scheduleText += " б"
         }
@@ -302,7 +309,7 @@ function countAndShowTime() {
     }
     if (sr_total_ms > 0) {
         scheduleText += "Ср(" + dates["res_sr"] + ") > " + sr_start + " - " + sr_finish + " (" + getNormalTime(sr_total_ms);
-        
+
         if (sr_break.checked) {
             scheduleText += " б"
         }
@@ -318,7 +325,7 @@ function countAndShowTime() {
     }
     if (cht_total_ms > 0) {
         scheduleText += "Чт(" + dates["res_cht"] + ") > " + cht_start + " - " + cht_finish + " (" + getNormalTime(cht_total_ms);
-        
+
         if (cht_break.checked) {
             scheduleText += " б"
         }
@@ -334,7 +341,7 @@ function countAndShowTime() {
     }
     if (pt_total_ms > 0) {
         scheduleText += "Пт(" + dates["res_pt"] + ") > " + pt_start + " - " + pt_finish + " (" + getNormalTime(pt_total_ms);
-        
+
         if (pt_break.checked) {
             scheduleText += " б"
         }
@@ -350,7 +357,7 @@ function countAndShowTime() {
     }
     if (sb_total_ms > 0) {
         scheduleText += "Сб(" + dates["res_sb"] + ") > " + sb_start + " - " + sb_finish + " (" + getNormalTime(sb_total_ms);
-        
+
         if (sb_break.checked) {
             scheduleText += " б"
         }
@@ -366,7 +373,7 @@ function countAndShowTime() {
     }
     if (vs_total_ms > 0) {
         scheduleText += "Вс(" + dates["res_vs"] + ") > " + vs_start + " - " + vs_finish + " (" + getNormalTime(vs_total_ms);
-        
+
         if (vs_break.checked) {
             scheduleText += " б"
         }
