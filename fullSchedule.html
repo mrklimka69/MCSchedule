@@ -17,13 +17,19 @@
     <title>Schedule</title>
   </head>
   <body>
-    <div class="settings_salary_div">
-      <center>
+    <div class="settings_salary_div text-center">
+      <div class="first_table">
         <table>
           <tr>
-            <td><label for="">Зарплата в час = </label></td>
+            <td><label for="">Зарплата грязными в час = </label></td>
 
-            <td><input type="number" class="propose_sumPerHour_input" id="salaryPerHourInput" /></td>
+            <td>
+              <input
+                type="number"
+                class="propose_sumPerHour_input"
+                id="salaryPerHourInput"
+              />
+            </td>
 
             <td>
               <table cellspacing="0" cellpadding="0">
@@ -54,7 +60,22 @@
             </td>
           </tr>
         </table>
-      </center>
+      </div>
+
+      <div>
+        <table>
+          <tr>
+            <td colspan="3">Процент на налоги - 19.5%</td>
+          </tr>
+          <tr>
+            <td>Чистыми</td>
+            <td>-</td>
+            <td>
+              <label class="clear_salary" id="clear_salary">00.00грн</label>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <div class="button_sumFromAllTime">

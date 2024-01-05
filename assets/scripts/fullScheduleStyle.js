@@ -41,6 +41,8 @@ document.getElementById('vs_finish').onchange = countAndShowTime;
 document.getElementById('date_start').onchange = countAndShowTime;
 
 document.getElementById('button').onclick = countAndShowTime;
+document.getElementById('button_116.03').onclick = countAndShowTime;
+document.getElementById('button_119.03').onclick = countAndShowTime;
 
 document.getElementById('pn_break').onchange = countAndShowTime;
 document.getElementById('vt_break').onchange = countAndShowTime;
@@ -67,13 +69,12 @@ document.getElementById('sb_double_panch').onchange = countAndShowTime;
 document.getElementById('vs_double_panch').onchange = countAndShowTime;
 
 document.getElementById('salaryPerHourInput').onchange = countAndShowTime;
-document.getElementById('button_116.03').onclick = countAndShowTime;
-document.getElementById('button_119.03').onclick = countAndShowTime;
+
 
 let moneyPerHour = 0;
 function countAndShowTime() {
     moneyPerHour = document.getElementById('salaryPerHourInput').value;
-
+    countAndShowClearSalary();
     ////////////////////////////// Понедельник
     let start = document.getElementById('pn_start').value;
     let finish = document.getElementById('pn_finish').value;
@@ -658,4 +659,8 @@ function getJobTitle(userTitle) {
     }
 
     return "";
+}
+
+function countAndShowClearSalary() {
+    document.getElementById('clear_salary').innerHTML = (moneyPerHour - (moneyPerHour * 0.195)).toFixed(2) + "грн";
 }

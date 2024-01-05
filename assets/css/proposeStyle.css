@@ -1,10 +1,15 @@
 .settings_salary_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+    
     margin-top: 8px;
 
-    /* border-radius: 2px;
+    border-radius: 2px;
     border-width: 2;
     border-style: dotted;
-    border-color: black; */
+    border-color: black;
 }
 
 .propose_sumPerHour_input {
@@ -24,4 +29,9 @@
 
     padding-left: 2px;
     padding-bottom: 4px;
+}
+
+.clear_salary {
+    color: black;
+    font-weight: 700;
 }
