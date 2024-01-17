@@ -269,8 +269,6 @@ function countAndShowTime() {
     all_textToShow = getNormalTime(all_ms);
     document.getElementById('all_result').innerHTML = all_textToShow;
 
-    // document.getElementById('all_salary').innerHTML = getMoneyFromMs(all_ms).toFixed(2);
-
 
     let dates = getDates();
     let years = getYearFromDate(document.querySelector("#date_start").value);
@@ -418,9 +416,18 @@ function countAndShowTime() {
         scheduleText += "Итого " + all_textToShow + " (~" + getMoneyFromMs(all_ms).toFixed(0) + "грн)";
     }
 
-
     document.getElementById('all_salary').innerHTML = getMoneyFromMs(all_ms).toFixed(2);
     document.getElementById('textToCopy').innerHTML = scheduleText;
+
+    const amountOfWorkDays = getAmountOfWorkDays([pn_total_ms, vt_total_ms, sr_total_ms, cht_total_ms, pt_total_ms, sb_total_ms, vs_total_ms]);
+    showInfo(all_ms, amountOfWorkDays);
+
+
+    const totalAmountOfDaysWithBreak = getAmountOfBreaks([pn_break.checked, vt_break.checked, sr_break.checked, cht_break.checked, pt_break.checked, sb_break.checked, vs_break.checked], [pn_total_ms, vt_total_ms, sr_total_ms, cht_total_ms, pt_total_ms, sb_total_ms, vs_total_ms]);
+    const totalAmountOfDaysWithoutBreak = amountOfWorkDays - totalAmountOfDaysWithBreak;
+
+    document.getElementById('amount_break_label').innerHTML = "Дней с брейком - " + totalAmountOfDaysWithBreak;
+    document.getElementById('amount_without_break_label').innerHTML = "Дней без брейка - " + totalAmountOfDaysWithoutBreak;
 }
 
 function getMs(start, finish) {
@@ -663,4 +670,37 @@ function getJobTitle(userTitle) {
 
 function countAndShowClearSalary() {
     document.getElementById('clear_salary').innerHTML = (moneyPerHour - (moneyPerHour * 0.195)).toFixed(2) + "грн";
+}
+
+function getAmountOfWorkDays(days_ms) {
+    let amount = 0;
+
+    for (var elem in days_ms) {
+        if (days_ms[elem] > 0) {
+            amount++;
+
+        }
+    }
+
+    return amount;
+}
+
+function getAmountOfBreaks(all_breaks, days_ms) {
+    let amount = 0;
+
+    for (var elem in all_breaks) {
+        if (!all_breaks[elem]) {
+            if (days_ms[elem] > 0) {
+                amount++;
+            }
+        }
+    }
+
+    return amount;
+}
+
+function showInfo(all_ms, days) {
+    if (all_ms > 0) {
+        document.getElementById('avg_hours_label').innerHTML = ("Среднее кол-во часов в день - " + getNormalTime(all_ms / days));
+    }
 }
