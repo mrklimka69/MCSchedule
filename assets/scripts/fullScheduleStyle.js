@@ -552,6 +552,7 @@ function getJobTitle(userTitle) {
     const TABLE_SERVIS = ["sts", "стс", "тенты", "тент", "тейбл", "тэйбл", "разнос", "вынос", "тейбл сервис"];
     const DRIVE = ["dt", "дт", "драйв",];
     const DOSTAVKA = ["mds", "мдс", "доставка", "доставщик"];
+    const ZAPASY = ["frs", "фрс", "запасы"];
 
     /////////////////////// Картошка
     for (let i = 0; i < FRY.length; i++) {
@@ -662,6 +663,12 @@ function getJobTitle(userTitle) {
     for (let i = 0; i < DOSTAVKA.length; i++) {
         if (DOSTAVKA[i] === userTitle.toLowerCase()) {
             return "доставка";
+        }
+    }
+
+    for (let i = 0; i < FRY.length; i++) {
+        if (ZAPASY[i] === userTitle.toLowerCase()) {
+            return "запасы";
         }
     }
 
