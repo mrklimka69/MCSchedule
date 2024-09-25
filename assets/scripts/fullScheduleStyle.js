@@ -553,6 +553,7 @@ function getJobTitle(userTitle) {
     const DRIVE = ["dt", "дт", "драйв",];
     const DOSTAVKA = ["mds", "мдс", "доставка", "доставщик"];
     const ZAPASY = ["frs", "фрс", "запасы"];
+    const ACTIVE_CASH = ["ach", "кэш", "эктив кэш", "ач", "active cash"];
 
     /////////////////////// Картошка
     for (let i = 0; i < FRY.length; i++) {
@@ -666,9 +667,17 @@ function getJobTitle(userTitle) {
         }
     }
 
-    for (let i = 0; i < FRY.length; i++) {
+    /////////////////////// Запасы
+    for (let i = 0; i < ZAPASY.length; i++) {
         if (ZAPASY[i] === userTitle.toLowerCase()) {
             return "запасы";
+        }
+    }
+
+    /////////////////////// Active cash
+    for (let i = 0; i < ACTIVE_CASH.length; i++) {
+        if (ACTIVE_CASH[i] === userTitle.toLowerCase()) {
+            return "active cash";
         }
     }
 

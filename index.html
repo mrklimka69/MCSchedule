@@ -17,76 +17,88 @@
     <title>Schedule</title>
   </head>
   <body>
-    <div class="settings_salary_div text-center">
-      <div class="first_table">
-        <table>
-          <tr>
-            <td><label for="">Зарплата грязными в час = </label></td>
+    <header>
+      <div class="settings_salary_div text-center">
+        <div class="first_table">
+          <table>
+            <tr>
+              <td><label for="">Зарплата грязными в час = </label></td>
 
-            <td>
-              <input
-                type="number"
-                class="propose_sumPerHour_input"
-                id="salaryPerHourInput"
-              />
-            </td>
+              <td>
+                <input
+                  type="number"
+                  class="propose_sumPerHour_input"
+                  id="salaryPerHourInput"
+                />
+              </td>
 
-            <td>
-              <table cellspacing="0" cellpadding="0">
-                <tr>
-                  <td>
-                    <button
-                      class="btn btn-primary propose_sumPerHour_button"
-                      id="button_116.03"
-                    ></button>
-                  </td>
-                  <td>
-                    <label class="propose_sumPerHour_label">116.03 </label>
-                  </td>
-                </tr>
+              <td>
+                <table cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td>
+                      <button
+                        class="btn btn-primary propose_sumPerHour_button"
+                        id="button_116.03"
+                      ></button>
+                    </td>
+                    <td>
+                      <label class="propose_sumPerHour_label">116.03 </label>
+                    </td>
+                  </tr>
 
-                <tr>
-                  <td>
-                    <button
-                      class="btn btn-primary propose_sumPerHour_button"
-                      id="button_119.03"
-                    ></button>
-                  </td>
-                  <td>
-                    <label class="propose_sumPerHour_label">119.03</label>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn btn-primary propose_sumPerHour_button"
+                        id="button_119.03"
+                      ></button>
+                    </td>
+                    <td>
+                      <label class="propose_sumPerHour_label">119.03</label>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
+          <table>
+            <tr>
+              <td colspan="3">Процент на налоги - 19.5%</td>
+            </tr>
+            <tr>
+              <td>Чистыми</td>
+              <td>-</td>
+              <td>
+                <label class="clear_salary" id="clear_salary">00.00грн</label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="info_div">
+          <label class="avg_hours_label" id="avg_hours_label"
+            >Среднее кол-во часов в день - 00:00</label
+          >
+          <br />
+          <label class="amount_break_label" id="amount_break_label"
+            >Дней с брейком - 0</label
+          >
+          <br />
+          <label
+            class="amount_without_break_label"
+            id="amount_without_break_label"
+            >Дней без брейка - 0</label
+          >
+        </div>
+
+        <div class="button_full_schedule">
+          <a href="RangeSchedule.html">Посчитать полное что-то</a>
+        </div>
       </div>
-
-      <div>
-        <table>
-          <tr>
-            <td colspan="3">Процент на налоги - 19.5%</td>
-          </tr>
-          <tr>
-            <td>Чистыми</td>
-            <td>-</td>
-            <td>
-              <label class="clear_salary" id="clear_salary">00.00грн</label>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="info_div">
-        <label class="avg_hours_label" id="avg_hours_label"
-          >Среднее кол-во часов в день - 00:00</label
-        >
-        <br />
-        <label class="amount_break_label" id="amount_break_label">Дней с брейком - 0</label> 
-        <br />
-        <label class="amount_without_break_label" id="amount_without_break_label">Дней без брейка - 0</label> 
-      </div>
-    </div>
+    </header>
 
     <!-- //// Кнопка для перехода на первую страницу -->
     <!-- <div class="button_sumFromAllTime">
@@ -627,12 +639,13 @@
 
       <div class="textToCopy">
         <textarea id="textToCopy" cols="60" rows="10" readonly></textarea>
-        <!-- <textarea id="textToInput" cols="60" rows="10"></textarea> -->
+        <textarea id="textToInput" cols="60" rows="10"></textarea>
       </div>
     </div>
 
     <script src="assets/scripts/fullScheduleStyle.js"></script>
     <script src="assets/scripts/proposeScript.js"></script>
+    <script src="assets/scripts/readSchedule.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
