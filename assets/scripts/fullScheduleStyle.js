@@ -70,6 +70,7 @@ document.getElementById('vs_double_panch').onchange = countAndShowTime;
 
 document.getElementById('salaryPerHourInput').onchange = countAndShowTime;
 
+const taxPercent = 23;
 
 let moneyPerHour = 0;
 function countAndShowTime() {
@@ -483,7 +484,7 @@ function getMoneyFromMs(ms) {
 
     let hours = ms / 3600000;
 
-    let salary = moneyPerHour - (moneyPerHour * 0.195);
+    let salary = moneyPerHour - (moneyPerHour * (taxPercent / 100));
 
     return salary * hours;
 }
@@ -693,7 +694,7 @@ function getJobTitle(userTitle) {
 }
 
 function countAndShowClearSalary() {
-    document.getElementById('clear_salary').innerHTML = (moneyPerHour - (moneyPerHour * 0.195)).toFixed(2) + "грн";
+    document.getElementById('clear_salary').innerHTML = (moneyPerHour - (moneyPerHour * (taxPercent / 100))).toFixed(2) + "грн";
 }
 
 function getAmountOfWorkDays(days_ms) {
